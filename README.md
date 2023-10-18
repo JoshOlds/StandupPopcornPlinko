@@ -9,3 +9,10 @@ See GitHub releases tab for EXE download.
 
 ### How to Build
 Built using Godot 4.2 Beta 1. Simply open the project file with the Godot editor, and away you go!
+
+
+
+
+https://github.com/JoshOlds/StandupPopcornPlinko/assets/8272568/53f200b8-2a38-4371-9d2f-abd2dbb919d6
+
+
