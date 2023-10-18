@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0xfevp2188bc"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_be7mw"]
+[ext_resource type="Texture2D" uid="uid://df5sb0qkbq4c8" path="res://images/katie.png" id="1_r8y88"]
+[ext_resource type="Script" path="res://scripts/random_ready_impulse.gd" id="2_8oht0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x17ly"]
+bounce = 0.8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ffhsf"]
+radius = 30.0167
+
+[node name="Player" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_x17ly")
+angular_damp = 0.5
+script = ExtResource("1_be7mw")
+player_name = "Katie"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_r8y88")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ffhsf")
+
+[node name="ImpulseApplyer" type="Node" parent="." node_paths=PackedStringArray("rigid_body")]
+script = ExtResource("2_8oht0")
+rigid_body = NodePath("..")
+impulse_min = Vector2(-100, -100)
+impulse_max = Vector2(100, 100)

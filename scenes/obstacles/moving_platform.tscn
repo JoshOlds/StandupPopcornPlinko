@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bayv016lkhkto"]
+
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="1_1jqoy"]
+[ext_resource type="Script" path="res://scripts/wall_drawer.gd" id="1_s2hsf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wo2yo"]
+size = Vector2(282, 58)
+
+[node name="MovingPlatform" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wo2yo")
+script = ExtResource("1_s2hsf")
+inner_color = Color(0, 0.615686, 0, 1)
+border_color = Color(0.780392, 0.780392, 0.780392, 1)
+border_width = 10.0
+
+[node name="Mover" type="Node" parent="." node_paths=PackedStringArray("static_body_ref")]
+script = ExtResource("1_1jqoy")
+static_body_ref = NodePath("..")
+move_distance = Vector2(500, 0)
+move_speed = 20.0

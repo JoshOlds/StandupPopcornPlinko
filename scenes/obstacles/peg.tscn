@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctonmu5wqjin"]
+
+[ext_resource type="Script" path="res://scripts/peg_drawer.gd" id="1_mjfph"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ykuiw"]
+radius = 24.0
+
+[node name="Peg" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ykuiw")
+script = ExtResource("1_mjfph")
+color = Color(0.164706, 0.396078, 1, 1)
+outline_color = Color(0.85098, 0.85098, 0.85098, 1)

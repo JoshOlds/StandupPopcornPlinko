@@ -1,0 +1,551 @@
+[gd_scene load_steps=31 format=3 uid="uid://bcfch4h4eov0j"]
+
+[ext_resource type="Script" path="res://scripts/wall_drawer.gd" id="1_5cjjm"]
+[ext_resource type="Script" path="res://scripts/peg_layer.gd" id="2_pbeqw"]
+[ext_resource type="PackedScene" uid="uid://c0xfevp2188bc" path="res://scenes/people/katie.tscn" id="3_620jr"]
+[ext_resource type="PackedScene" uid="uid://bayv016lkhkto" path="res://scenes/obstacles/moving_platform.tscn" id="3_bjovw"]
+[ext_resource type="PackedScene" uid="uid://bjbrym5n24i0l" path="res://scenes/obstacles/rotator.tscn" id="4_wujqf"]
+[ext_resource type="Script" path="res://scripts/rotator.gd" id="5_u1ixb"]
+[ext_resource type="PackedScene" uid="uid://db3ufen44kma8" path="res://scenes/obstacles/triangle_peg.tscn" id="6_jacic"]
+[ext_resource type="Script" path="res://scripts/camera_follower.gd" id="6_juale"]
+[ext_resource type="Script" path="res://scenes/victory_area.gd" id="7_x521o"]
+[ext_resource type="PackedScene" uid="uid://0y5icb2e58vk" path="res://scenes/fireworks.tscn" id="8_jisq1"]
+[ext_resource type="Script" path="res://scenes/victory_label.gd" id="11_p8ch8"]
+[ext_resource type="Texture2D" uid="uid://dannocy2bg4ok" path="res://images/akash.png" id="12_2duq5"]
+[ext_resource type="Texture2D" uid="uid://drw64rhjg0cng" path="res://images/dylan.png" id="13_1r6cn"]
+[ext_resource type="Texture2D" uid="uid://dtcy33mk4wxnf" path="res://images/garrett.png" id="14_k7enr"]
+[ext_resource type="Texture2D" uid="uid://v8q854xo2ap8" path="res://images/james.png" id="15_bpa4f"]
+[ext_resource type="Texture2D" uid="uid://b68b835o3e0wd" path="res://images/josh.png" id="16_qkili"]
+[ext_resource type="Texture2D" uid="uid://10d2w4wv4kq4" path="res://images/mak.png" id="17_uukhv"]
+[ext_resource type="Texture2D" uid="uid://nf2tpi6w33j5" path="res://images/mitch_adams.png" id="18_48m6n"]
+[ext_resource type="Texture2D" uid="uid://rajoysbmqyrd" path="res://images/mitch_allain.png" id="19_u30go"]
+[ext_resource type="Texture2D" uid="uid://dwlncdhwxwucv" path="res://images/nardos.png" id="20_jau68"]
+[ext_resource type="Texture2D" uid="uid://q4avt74iutf4" path="res://images/peter.png" id="21_iia6n"]
+[ext_resource type="Texture2D" uid="uid://bn6so6ey3urni" path="res://images/suhasa.png" id="22_hgvgt"]
+[ext_resource type="Texture2D" uid="uid://bd1erpyenwmlu" path="res://images/yihsuan.png" id="23_wt1vo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkhro"]
+size = Vector2(129, 4552)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfbrl"]
+size = Vector2(129, 4544)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyl6r"]
+size = Vector2(1920.25, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8ojm"]
+size = Vector2(330, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke434"]
+size = Vector2(1930, 56)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8xfc"]
+bg_color = Color(0, 0, 0, 0.780392)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="Theme" id="Theme_l3nvl"]
+Label/font_sizes/font_size = 32
+Label/styles/normal = SubResource("StyleBoxFlat_e8xfc")
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("tracked_nodes")]
+offset = Vector2(960, 0)
+position_smoothing_speed = 100.0
+script = ExtResource("6_juale")
+tracked_nodes = [NodePath("../Players/Katie"), NodePath("../Players/Akash"), NodePath("../Players/Dylan"), NodePath("../Players/Peter"), NodePath("../Players/Garrett"), NodePath("../Players/James"), NodePath("../Players/MitchAllain"), NodePath("../Players/Josh"), NodePath("../Players/MitchAdams"), NodePath("../Players/Nardos"), NodePath("../Players/Suhasa"), NodePath("../Players/YiHsuan"), NodePath("../Players/Makarand")]
+camera_accel = 3.0
+
+[node name="Obstacles" type="StaticBody2D" parent="."]
+
+[node name="Left Wall" type="CollisionShape2D" parent="Obstacles"]
+position = Vector2(63.5, 1508)
+shape = SubResource("RectangleShape2D_bkhro")
+script = ExtResource("1_5cjjm")
+inner_color = Color(0.207843, 0.435294, 1, 1)
+border_color = Color(0.8, 0.8, 0.8, 1)
+border_width = 10.0
+
+[node name="Right Wall" type="CollisionShape2D" parent="Obstacles"]
+position = Vector2(1856, 1504)
+shape = SubResource("RectangleShape2D_xfbrl")
+script = ExtResource("1_5cjjm")
+inner_color = Color(0.207843, 0.435294, 1, 1)
+border_color = Color(0.8, 0.8, 0.8, 1)
+border_width = 10.0
+
+[node name="Bottom Wall" type="CollisionShape2D" parent="Obstacles"]
+position = Vector2(960, 3734)
+shape = SubResource("RectangleShape2D_oyl6r")
+script = ExtResource("1_5cjjm")
+inner_color = Color(0, 0, 0.67451, 1)
+border_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Pegs" type="Node2D" parent="Obstacles"]
+
+[node name="PegLayer" type="Node2D" parent="Obstacles/Pegs"]
+position = Vector2(192, 192)
+script = ExtResource("2_pbeqw")
+x_seperation = 128
+amount_to_generate = 13
+
+[node name="PegLayer2" type="Node2D" parent="Obstacles/Pegs"]
+position = Vector2(224, 320)
+script = ExtResource("2_pbeqw")
+x_seperation = 128
+amount_to_generate = 13
+
+[node name="PegLayer3" type="Node2D" parent="Obstacles/Pegs"]
+position = Vector2(160, 448)
+script = ExtResource("2_pbeqw")
+x_seperation = 128
+amount_to_generate = 13
+
+[node name="PegLayer4" type="Node2D" parent="Obstacles/Pegs"]
+position = Vector2(168, 1144)
+script = ExtResource("2_pbeqw")
+x_seperation = 128
+amount_to_generate = 13
+
+[node name="PegLayer5" type="Node2D" parent="Obstacles/Pegs"]
+position = Vector2(224, 1256)
+script = ExtResource("2_pbeqw")
+x_seperation = 128
+amount_to_generate = 13
+
+[node name="PegLayer6" type="Node2D" parent="Obstacles/Pegs"]
+position = Vector2(256, 1416)
+script = ExtResource("2_pbeqw")
+x_seperation = 128
+amount_to_generate = 13
+
+[node name="SpinningBoxes" type="Node2D" parent="Obstacles"]
+
+[node name="StaticBody2D" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(448, 1800)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = -2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.403922, 0, 0, 1)
+border_width = 10.0
+
+[node name="StaticBody2D2" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(872, 1920)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0, 0.509804, 0, 1)
+border_width = 10.0
+
+[node name="StaticBody2D3" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(1344, 1832)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = -1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D3"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.858824, 0.533333, 0.533333, 1)
+border_width = 10.0
+
+[node name="StaticBody2D4" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(1600, 2080)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D4"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.584314, 0.788235, 0.513726, 1)
+border_width = 10.0
+
+[node name="StaticBody2D5" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(312, 2080)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = 1.7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D5"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.34902, 0.772549, 0.823529, 1)
+border_width = 10.0
+
+[node name="StaticBody2D6" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(1120, 2144)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D6"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.917647, 0.505882, 0, 1)
+border_width = 10.0
+
+[node name="StaticBody2D7" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(592, 2592)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = -2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D7"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.756863, 0.756863, 0, 1)
+border_width = 10.0
+
+[node name="StaticBody2D8" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(688, 2248)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D8"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.603922, 0.764706, 0.380392, 1)
+border_width = 10.0
+
+[node name="StaticBody2D9" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(1472, 2344)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = -1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D9"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.717647, 0.784314, 0.92549, 1)
+border_width = 10.0
+
+[node name="StaticBody2D10" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(1608, 2624)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D10"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.8, 0.219608, 0.317647, 1)
+border_width = 10.0
+
+[node name="StaticBody2D11" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(304, 2400)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D11"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.54902, 0, 0.384314, 1)
+border_width = 10.0
+
+[node name="StaticBody2D12" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(1016, 2488)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D12"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.752941, 0.752941, 0.752941, 1)
+border_width = 10.0
+
+[node name="StaticBody2D13" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(478, 3152)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D13"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.286275, 0.458824, 0.760784, 1)
+border_width = 10.0
+
+[node name="StaticBody2D14" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(1016, 3152)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = -2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D14"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.596078, 0.301961, 0.592157, 1)
+border_width = 10.0
+
+[node name="StaticBody2D15" type="CharacterBody2D" parent="Obstacles/SpinningBoxes"]
+position = Vector2(1512, 3152)
+script = ExtResource("5_u1ixb")
+rotate_rate_rads = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/SpinningBoxes/StaticBody2D15"]
+shape = SubResource("RectangleShape2D_l8ojm")
+script = ExtResource("1_5cjjm")
+border_color = Color(0.427451, 0.254902, 0.0313726, 1)
+border_width = 10.0
+
+[node name="RotatingPies" type="Node2D" parent="Obstacles"]
+
+[node name="Rotator" parent="Obstacles/RotatingPies" instance=ExtResource("4_wujqf")]
+position = Vector2(320, 784)
+
+[node name="Rotator2" parent="Obstacles/RotatingPies" instance=ExtResource("4_wujqf")]
+position = Vector2(696, 880)
+rotation = 1.0472
+
+[node name="Rotator3" parent="Obstacles/RotatingPies" instance=ExtResource("4_wujqf")]
+position = Vector2(1632, 752)
+rotation = -1.309
+scale = Vector2(1.5, 1.5)
+
+[node name="Rotator4" parent="Obstacles/RotatingPies" instance=ExtResource("4_wujqf")]
+position = Vector2(1256, 880)
+rotation = 0.523598
+
+[node name="Rotator5" parent="Obstacles/RotatingPies" instance=ExtResource("4_wujqf")]
+position = Vector2(960, 896)
+rotate_rate_rads = 2.2
+
+[node name="Rotator6" parent="Obstacles/RotatingPies" instance=ExtResource("4_wujqf")]
+position = Vector2(1480, 968)
+rotation = -0.523598
+
+[node name="Rotator7" parent="Obstacles/RotatingPies" instance=ExtResource("4_wujqf")]
+position = Vector2(472, 960)
+rotation = -0.523598
+rotate_rate_rads = 1.5
+
+[node name="MovingPlatforms" type="Node2D" parent="Obstacles"]
+
+[node name="MovingPlatform" parent="Obstacles/MovingPlatforms" instance=ExtResource("3_bjovw")]
+position = Vector2(520, 600)
+
+[node name="Mover" parent="Obstacles/MovingPlatforms/MovingPlatform" index="1"]
+move_distance = Vector2(250, 0)
+move_speed = 500.0
+
+[node name="MovingPlatform2" parent="Obstacles/MovingPlatforms" instance=ExtResource("3_bjovw")]
+position = Vector2(1360, 560)
+
+[node name="CollisionShape2D" parent="Obstacles/MovingPlatforms/MovingPlatform2" index="0"]
+inner_color = Color(0, 0.615686, 0, 1)
+border_color = Color(0.780392, 0.780392, 0.780392, 1)
+
+[node name="Mover" parent="Obstacles/MovingPlatforms/MovingPlatform2" index="1"]
+move_distance = Vector2(250, 0)
+move_speed = 300.0
+
+[node name="MovingPlatform3" parent="Obstacles/MovingPlatforms" instance=ExtResource("3_bjovw")]
+position = Vector2(960, 696)
+
+[node name="CollisionShape2D" parent="Obstacles/MovingPlatforms/MovingPlatform3" index="0"]
+inner_color = Color(0, 0.615686, 0, 1)
+border_color = Color(0.780392, 0.780392, 0.780392, 1)
+
+[node name="Mover" parent="Obstacles/MovingPlatforms/MovingPlatform3" index="1"]
+move_distance = Vector2(300, 0)
+move_speed = -444.0
+
+[node name="TrianglePegs" type="Node2D" parent="Obstacles"]
+
+[node name="PegLayer" type="Node2D" parent="Obstacles/TrianglePegs"]
+position = Vector2(256, 2896)
+script = ExtResource("2_pbeqw")
+x_seperation = 120
+amount_to_generate = 13
+peg_scene = ExtResource("6_jacic")
+
+[node name="PegLayer3" type="Node2D" parent="Obstacles/TrianglePegs"]
+position = Vector2(224, 3400)
+script = ExtResource("2_pbeqw")
+x_seperation = 120
+amount_to_generate = 13
+peg_scene = ExtResource("6_jacic")
+
+[node name="VictoryArea" type="Area2D" parent="."]
+script = ExtResource("7_x521o")
+finish_particles = ExtResource("8_jisq1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VictoryArea"]
+position = Vector2(960, 3672)
+shape = SubResource("RectangleShape2D_ke434")
+
+[node name="UI" type="CanvasLayer" parent="."]
+offset = Vector2(25, 25)
+transform = Transform2D(1, 0, 0, 1, 25, 25)
+
+[node name="BoxContainer" type="BoxContainer" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 5
+vertical = true
+
+[node name="Label" type="Label" parent="UI/BoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_l3nvl")
+script = ExtResource("11_p8ch8")
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Akash" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(512, -344)
+player_name = "Akash"
+
+[node name="Sprite2D" parent="Players/Akash" index="0"]
+texture = ExtResource("12_2duq5")
+
+[node name="ImpulseApplyer" parent="Players/Akash" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="Katie" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(384, -344)
+
+[node name="ImpulseApplyer" parent="Players/Katie" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="Dylan" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(640, -344)
+player_name = "Dylan"
+
+[node name="Sprite2D" parent="Players/Dylan" index="0"]
+texture = ExtResource("13_1r6cn")
+
+[node name="ImpulseApplyer" parent="Players/Dylan" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="Garrett" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(768, -344)
+player_name = "Garrett"
+
+[node name="Sprite2D" parent="Players/Garrett" index="0"]
+texture = ExtResource("14_k7enr")
+
+[node name="ImpulseApplyer" parent="Players/Garrett" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="James" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(896, -344)
+player_name = "James"
+
+[node name="Sprite2D" parent="Players/James" index="0"]
+texture = ExtResource("15_bpa4f")
+
+[node name="ImpulseApplyer" parent="Players/James" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="Josh" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(1024, -344)
+player_name = "Josh"
+
+[node name="Sprite2D" parent="Players/Josh" index="0"]
+texture = ExtResource("16_qkili")
+
+[node name="ImpulseApplyer" parent="Players/Josh" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="Makarand" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(1152, -344)
+player_name = "Makarand"
+
+[node name="Sprite2D" parent="Players/Makarand" index="0"]
+texture = ExtResource("17_uukhv")
+
+[node name="ImpulseApplyer" parent="Players/Makarand" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="MitchAdams" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(1280, -344)
+player_name = "Mr Adams"
+
+[node name="Sprite2D" parent="Players/MitchAdams" index="0"]
+texture = ExtResource("18_48m6n")
+
+[node name="ImpulseApplyer" parent="Players/MitchAdams" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="MitchAllain" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(960, -344)
+player_name = "Mitch Allain"
+
+[node name="Sprite2D" parent="Players/MitchAllain" index="0"]
+texture = ExtResource("19_u30go")
+
+[node name="ImpulseApplyer" parent="Players/MitchAllain" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="Nardos" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(1408, -344)
+player_name = "Nardos"
+
+[node name="Sprite2D" parent="Players/Nardos" index="0"]
+texture = ExtResource("20_jau68")
+
+[node name="ImpulseApplyer" parent="Players/Nardos" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="Peter" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(256, -344)
+player_name = "Peter"
+
+[node name="Sprite2D" parent="Players/Peter" index="0"]
+texture = ExtResource("21_iia6n")
+
+[node name="ImpulseApplyer" parent="Players/Peter" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="Suhasa" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(1536, -344)
+player_name = "Suhasa"
+
+[node name="Sprite2D" parent="Players/Suhasa" index="0"]
+texture = ExtResource("22_hgvgt")
+
+[node name="ImpulseApplyer" parent="Players/Suhasa" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[node name="YiHsuan" parent="Players" instance=ExtResource("3_620jr")]
+position = Vector2(1664, -344)
+player_name = "Yi-Hsuan"
+
+[node name="Sprite2D" parent="Players/YiHsuan" index="0"]
+texture = ExtResource("23_wt1vo")
+
+[node name="ImpulseApplyer" parent="Players/YiHsuan" index="2"]
+impulse_min = Vector2(-350, -50)
+impulse_max = Vector2(350, -250)
+
+[connection signal="body_entered" from="VictoryArea" to="VictoryArea" method="_on_body_entered"]
+
+[editable path="Obstacles/MovingPlatforms/MovingPlatform"]
+[editable path="Obstacles/MovingPlatforms/MovingPlatform2"]
+[editable path="Obstacles/MovingPlatforms/MovingPlatform3"]
+[editable path="Players/Akash"]
+[editable path="Players/Katie"]
+[editable path="Players/Dylan"]
+[editable path="Players/Garrett"]
+[editable path="Players/James"]
+[editable path="Players/Josh"]
+[editable path="Players/Makarand"]
+[editable path="Players/MitchAdams"]
+[editable path="Players/MitchAllain"]
+[editable path="Players/Nardos"]
+[editable path="Players/Peter"]
+[editable path="Players/Suhasa"]
+[editable path="Players/YiHsuan"]

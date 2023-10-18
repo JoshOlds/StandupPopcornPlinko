@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjbrym5n24i0l"]
+
+[ext_resource type="Script" path="res://scripts/rotator.gd" id="1_4wma3"]
+[ext_resource type="Script" path="res://scripts/polygon_drawer.gd" id="2_6g41g"]
+
+[node name="Rotator" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+platform_on_leave = 2
+script = ExtResource("1_4wma3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1.5, 1.5)
+build_mode = 1
+polygon = PackedVector2Array(-40, -32, 0, 0, 40, -32, 48, 0, 40, 24, 16, 40, -16, 40, -40, 24, -48, 0)
+script = ExtResource("2_6g41g")
+line_width = 3.0
