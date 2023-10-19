@@ -1,14 +1,5 @@
 extends RigidBody2D
 class_name Player
+## Player class - extends RigidBody2D and holds the player's name
 
 @export var player_name : String = "New Player"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

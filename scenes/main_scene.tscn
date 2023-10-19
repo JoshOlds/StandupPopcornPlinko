@@ -301,7 +301,6 @@ rotation = 1.0472
 [node name="Rotator3" parent="Obstacles/RotatingPies" instance=ExtResource("4_wujqf")]
 position = Vector2(1632, 752)
 rotation = -1.309
-scale = Vector2(1.5, 1.5)
 
 [node name="Rotator4" parent="Obstacles/RotatingPies" instance=ExtResource("4_wujqf")]
 position = Vector2(1256, 880)
@@ -325,29 +324,24 @@ rotate_rate_rads = 1.5
 [node name="MovingPlatform" parent="Obstacles/MovingPlatforms" instance=ExtResource("3_bjovw")]
 position = Vector2(520, 600)
 
-[node name="Mover" parent="Obstacles/MovingPlatforms/MovingPlatform" index="1"]
+[node name="Mover" parent="Obstacles/MovingPlatforms/MovingPlatform" index="1" node_paths=PackedStringArray("character_body_ref")]
+character_body_ref = NodePath("..")
 move_distance = Vector2(250, 0)
 move_speed = 500.0
 
 [node name="MovingPlatform2" parent="Obstacles/MovingPlatforms" instance=ExtResource("3_bjovw")]
 position = Vector2(1360, 560)
 
-[node name="CollisionShape2D" parent="Obstacles/MovingPlatforms/MovingPlatform2" index="0"]
-inner_color = Color(0, 0.615686, 0, 1)
-border_color = Color(0.780392, 0.780392, 0.780392, 1)
-
-[node name="Mover" parent="Obstacles/MovingPlatforms/MovingPlatform2" index="1"]
+[node name="Mover" parent="Obstacles/MovingPlatforms/MovingPlatform2" index="1" node_paths=PackedStringArray("character_body_ref")]
+character_body_ref = NodePath("..")
 move_distance = Vector2(250, 0)
 move_speed = 300.0
 
 [node name="MovingPlatform3" parent="Obstacles/MovingPlatforms" instance=ExtResource("3_bjovw")]
 position = Vector2(960, 696)
 
-[node name="CollisionShape2D" parent="Obstacles/MovingPlatforms/MovingPlatform3" index="0"]
-inner_color = Color(0, 0.615686, 0, 1)
-border_color = Color(0.780392, 0.780392, 0.780392, 1)
-
-[node name="Mover" parent="Obstacles/MovingPlatforms/MovingPlatform3" index="1"]
+[node name="Mover" parent="Obstacles/MovingPlatforms/MovingPlatform3" index="1" node_paths=PackedStringArray("character_body_ref")]
+character_body_ref = NodePath("..")
 move_distance = Vector2(300, 0)
 move_speed = -444.0
 
